@@ -1,0 +1,55 @@
+/* Margen superior slider*/
+.margen-superior{
+  margin-top: 60em;
+}
+
+
+/*Slider circulos*/
+.slider .indicators .indicator-item {
+  background-color: #ffffff;/*El circulo de dentro*/
+  border: 3px solid #009688 ;
+  /*-webkit-box-shadow: 0 2px 5px 0 rgba(0, 0, 0, 0.16), 0 2px 10px 0 rgba(0, 0, 0, 0.12);
+  -moz-box-shadow: 0 2px 5px 0 rgba(0, 0, 0, 0.16), 0 2px 10px 0 rgba(0, 0, 0, 0.12);
+  box-shadow: 0 2px 5px 0 rgba(0, 0, 0, 0.16), 0 2px 10px 0 rgba(0, 0, 0, 0.12);*/
+}
+.slider .indicators .indicator-item.active {
+  background-color: #e64a19;/*Circulo de dentro cuando se selecciona*/
+}
+.slider {
+  width: 100%;
+  height: 100%;
+  /*margin: 0 auto;*/
+}
+
+.slider .indicators {
+  bottom: 60px;
+  z-index: 100;
+}
+/*FIN Slider circulos*/
+
+/*ESTO SOLO PARA LAS PAGINAS QUE NECESITE QUE ESTE EL FOOTER ABAJO SIEMPRE*/
+html{
+    position: relative; 
+    min-height: 100%;
+}
+
+footer{
+    margin-top: -0.85%;/*esto es lo que realmente me lo pone abajo poner solo en 
+    la pagina de inicio de sesion*/
+    width: 100%;
+    position: relative;
+}
+/*fin ESTO SOLO PARA LAS PAGINAS QUE NECESITE QUE ESTE EL FOOTER ABAJO SIEMPRE*/
+
+/* Cambiar color indicador tab en miperfil*/
+.tabs .indicator{
+	background-color: #ffffff;
+}
+
+/* FIN Cambiar color indicador tab en miperfil*/
+
+/* Esto hace que lo tabpane vayan cambiando los tabs
+#todos:checked ~ #contentTodos;
+#grupo:checked ~ #contentGrupo;
+#privado:checked ~ #contentPrivado;
+FIN Esto hace que lo tabpane vayan cambiando los tabs*/
