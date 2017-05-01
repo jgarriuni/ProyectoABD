@@ -2,7 +2,7 @@
 
   function buscarUsuario($usuario){
 
-    require('handlerBBDD.php');
+    require('conexion.php');
     $con = conectarBBDD();
     $encontrado = false;
 
@@ -11,13 +11,12 @@
       $result = mysql_query($sql, $con);
         if(mysql_num_rows($result) > 0){
 
-
           while(!$encontrado && ($row = mysql_fetch_assoc($result))){
             $encontrado = ($row["nombreusuario"] == $usuario);
           }
         }
     }
-    
+
     desconectarBBDD($con);
     return $encontrado;
   }

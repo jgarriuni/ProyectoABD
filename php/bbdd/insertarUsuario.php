@@ -1,15 +1,14 @@
 <?php
 
-    function insertarUsuario($conexion, $nombreUsuario, $nombre, $apellidos, $pass, $fechaNacimiento){
-
-        $insert = "INSERT INTO usuarios (nombreUsuario,nombre,apellidos,pass,fechaNacimiento, administrador) VALUES ('$nombreUsuario','$nombre','$apellidos','$pass','$fechaNacimiento','false')";
-
-        if(mysql_query($insert, $conexion)){
-            echo "ok </br>";
+    function insertarUsuario(){
+        require('conexion.php');
+        $con = conectarBBDD();
+        if($con != -1){
+            $insert = "INSERT INTO usuarios (nombreUsuario,nombre,apellidos,pass,fechaNacimiento, administrador) VALUES ('$_POST['Usuario']', '$_POST['Nombre']', '$_POST['Apellidos']', '$_POST['Contrasenia']', '$_POST['Fecha']', 'false')";
         }
         else{
-            echo "ERROR " . mysql_error() + "</br>";
+
         }
-        desconectarBBDD($conexion);
+
     }
 ?>

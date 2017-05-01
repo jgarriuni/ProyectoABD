@@ -21,21 +21,55 @@
       <script type="text/javascript" src="../js/materialize.js"></script>
 
       <!-- Barra de navegacion -->
-      <div class="navbar-fixed">
-		  <nav>
-			<div class="nav-wrapper teal"><!-- Color -->
-			 <a class="brand-logo"><i class="material-icons">chat</i>Tuita</a>
-			  <a href="#" data-activates="mobile-demo" class="button-collapse"><i class="material-icons">menu</i></a>
-			  <ul class="right hide-on-med-and-down">
-				<li><a href="registro.php">Registrarse</a></li>
-			  </ul>
-			  <ul class="side-nav" id="mobile-demo">
-				<li><a href="iniciarSesion.html">Iniciar Sesion</a></li>
-				<li><a href="registro.php">Registrarse</a></li>
-			  </ul>
-			</div>
-		  </nav>
-	  </div>
+      <nav>
+        <div class="nav-wrapper teal"><!-- Color -->
+         <a class="brand-logo"><i class="material-icons">chat</i>Tuita</a>
+          <a href="#" data-activates="mobile-demo" class="button-collapse"><i class="material-icons">menu</i></a>
+          <ul class="right hide-on-med-and-down">
+            <?php
+                session_start();
+                /*if(empty($_SESSION['usuario'])){
+                    echo "caca";
+                }
+                else{
+                    echo "bien";
+                }*/
+                if(!empty($_SESSION['usuario'])){
+                    if($_SESSION['usuario'] != null){
+                        echo "<li><a href='registro.php'>Registrarse</a></li>";
+                        echo "<li><a href='iniciarSesion.html'>Iniciar Sesion</a></li>";
+                    }
+                    else{
+                        echo "<li><a href='miPerfil.html'>Tu perfil,</a></li>";
+                        echo "<li><a href='#'>Cerrar Sesion<a></li>";
+                    }
+                }
+                else{
+                    echo "<li><a href='registro.php'>Registrarse</a></li>";
+                    echo "<li><a href='iniciarSesion.html'>Iniciar Sesion</a></li>";
+                }
+            ?>
+          </ul>
+          <ul class="side-nav" id="mobile-demo">
+              <?php
+              if(!empty($_SESSION['usuario'])){
+                  if($_SESSION['usuario'] != null){
+                      echo "<li><a href='registro.php'>Registrarse</a></li>";
+                      echo "<li><a href='iniciarSesion.html'>Iniciar Sesion</a></li>";
+                 }
+                 else{
+                      echo "<li><a href='miPerfil.html'>Tu perfil,</a></li>";
+                      echo "<li><a href='#'>Cerrar Sesion<a></li>";
+                 }
+             }
+             else{
+                 echo "<li><a href='registro.php'>Registrarse</a></li>";
+                 echo "<li><a href='iniciarSesion.html'>Iniciar Sesion</a></li>";
+             }
+             ?>
+          </ul>
+        </div>
+      </nav>
       <!-- Fin Barra de navegacion -->
       <main>
         <!-- Carrusel de Bienvenida -->

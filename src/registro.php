@@ -80,6 +80,9 @@
                   else{
                       require('../php/bbdd/insertarUsuario.php');
                       insertarUsuario();
+                      session_start();
+                      $_SESSION['usuario'] = $usuario;
+                      header('Location: index.php');
                   }
                 }
               ?>
