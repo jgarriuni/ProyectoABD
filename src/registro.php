@@ -30,11 +30,11 @@
           <a href="#" data-activates="mobile-demo" class="button-collapse"><i class="material-icons">menu</i></a>
           <ul class="right hide-on-med-and-down">
             <li><a href="iniciarSesion.html">Iniciar Sesion</a></li>
-            <li><a href="index.html">Pagina Principal</a></li>
+            <li><a href="index.php">Pagina Principal</a></li>
           </ul>
           <ul class="side-nav" id="mobile-demo">
             <li><a href="iniciarSesion.html">Iniciar Sesion</a></li>
-            <li><a href="index.html">Pagina Principal</a></li>
+            <li><a href="index.php">Pagina Principal</a></li>
           </ul>
         </div>
       </nav>
@@ -45,13 +45,14 @@
         <?php
           $nombre = $apellido = $usuario = $contrasenia = $fecha = $gustos = "";
           if($_SERVER["REQUEST_METHOD"] == "POST"){
-            require('../php/bbdd/tratarDatos.php');
-            $nombre = testearDato($_POST["Nombre"]);
-            $apellido = testearDato($_POST["Apellidos"]);
-            $usuario = testearDato($_POST["Usuario"]);
-            $contrasenia = testearDato($_POST["Contrasenia"]);
-            $fecha = testearDato($_POST["Fecha"]);
-          }
+
+                require('../php/controlador.php');
+                $nombre = testearDato($_POST["Nombre"]);
+                $apellido = testearDato($_POST["Apellidos"]);
+                $usuario = testearDato($_POST["Usuario"]);
+                $contrasenia = testearDato($_POST["Contrasenia"]);
+                $fecha = testearDato($_POST["Fecha"]);
+            }
         ?>
         <form class="col s12" method="post" action="<?php echo htmlspecialchars($_SERVER["PHP_SELF"])?>" onsubmit="return comprobarDatos()">
           <div class="row"><!-- DATOS NOMBRE Y USUARIO -->
@@ -73,15 +74,13 @@
               <p id="error_usuario" class="red-text"></p>
               <?php
                 if($usuario != ""){
-                  require('../php/bbdd/buscarUsuario.php');
-                  if(buscarUsuario($usuario)){
+                  if(buscar($usuario)){
                     echo '<p id="error_usuario" class="red-text">El usuario ya esta registrado</p>';
                   }
                   else{
-                      require('../php/bbdd/insertarUsuario.php');
-                      insertarUsuario();
+                      insertar($usuario, $nombre, $apellido, $contrasenia, $fecha);
                       session_start();
-                      $_SESSION['usuario'] = $usuario;
+                      $_SESSION["usuario"] = $usuario;
                       header('Location: index.php');
                   }
                 }

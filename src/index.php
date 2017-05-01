@@ -27,21 +27,16 @@
           <a href="#" data-activates="mobile-demo" class="button-collapse"><i class="material-icons">menu</i></a>
           <ul class="right hide-on-med-and-down">
             <?php
+                require('../php/controlador.php');
                 session_start();
-                /*if(empty($_SESSION['usuario'])){
-                    echo "caca";
-                }
-                else{
-                    echo "bien";
-                }*/
-                if(!empty($_SESSION['usuario'])){
-                    if($_SESSION['usuario'] != null){
-                        echo "<li><a href='registro.php'>Registrarse</a></li>";
-                        echo "<li><a href='iniciarSesion.html'>Iniciar Sesion</a></li>";
+                if(!empty($_SESSION["usuario"])){
+                    if($_SESSION["usuario"] != null){
+                        echo "<li><a href='miPerfil.html'>Hola, ".$_SESSION["usuario"]."</a></li>";
+                        echo "<li><a href='#'>Cerrar Sesion<a></li>";
                     }
                     else{
-                        echo "<li><a href='miPerfil.html'>Tu perfil,</a></li>";
-                        echo "<li><a href='#'>Cerrar Sesion<a></li>";
+                        echo "<li><a href='registro.php'>Registrarse</a></li>";
+                        echo "<li><a href='iniciarSesion.html'>Iniciar Sesion</a></li>";
                     }
                 }
                 else{
@@ -54,12 +49,12 @@
               <?php
               if(!empty($_SESSION['usuario'])){
                   if($_SESSION['usuario'] != null){
-                      echo "<li><a href='registro.php'>Registrarse</a></li>";
-                      echo "<li><a href='iniciarSesion.html'>Iniciar Sesion</a></li>";
+                      echo "<li><a href='miPerfil.html'>Hola, ".$_SESSION["usuario"]."</a></li>";
+                      echo "<li><a href=>Cerrar Sesion<a></li>";
                  }
                  else{
-                      echo "<li><a href='miPerfil.html'>Tu perfil,</a></li>";
-                      echo "<li><a href='#'>Cerrar Sesion<a></li>";
+                     echo "<li><a href='registro.php'>Registrarse</a></li>";
+                     echo "<li><a href='iniciarSesion.html'>Iniciar Sesion</a></li>";
                  }
              }
              else{
