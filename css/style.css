@@ -32,13 +32,6 @@ html{
     position: relative; 
     min-height: 100%;
 }
-
-footer{
-    margin-top: -0.85%;/*esto es lo que realmente me lo pone abajo poner solo en 
-    la pagina de inicio de sesion*/
-    width: 100%;
-    position: relative;
-}
 /*fin ESTO SOLO PARA LAS PAGINAS QUE NECESITE QUE ESTE EL FOOTER ABAJO SIEMPRE*/
 
 /* Cambiar color indicador tab en miperfil*/
@@ -48,6 +41,15 @@ footer{
 
 /* FIN Cambiar color indicador tab en miperfil*/
 
+body{
+  display: flex;
+  min-height: 100vh;
+  flex-direction: column;
+}
+
+main{
+  flex: 1 0 auto;
+}
 /* Esto hace que lo tabpane vayan cambiando los tabs
 #todos:checked ~ #contentTodos;
 #grupo:checked ~ #contentGrupo;
