@@ -36,12 +36,12 @@
                     }
                     else{
                         echo "<li><a href='registro.php'>Registrarse</a></li>";
-                        echo "<li><a href='iniciarSesion.html'>Iniciar Sesion</a></li>";
+                        echo "<li><a href='iniciarSesion.php'>Iniciar Sesion</a></li>";
                     }
                 }
                 else{
                     echo "<li><a href='registro.php'>Registrarse</a></li>";
-                    echo "<li><a href='iniciarSesion.html'>Iniciar Sesion</a></li>";
+                    echo "<li><a href='iniciarSesion.php'>Iniciar Sesion</a></li>";
                 }
             ?>
           </ul>
@@ -54,12 +54,12 @@
                  }
                  else{
                      echo "<li><a href='registro.php'>Registrarse</a></li>";
-                     echo "<li><a href='iniciarSesion.html'>Iniciar Sesion</a></li>";
+                     echo "<li><a href='iniciarSesion.php'>Iniciar Sesion</a></li>";
                  }
              }
              else{
                  echo "<li><a href='registro.php'>Registrarse</a></li>";
-                 echo "<li><a href='iniciarSesion.html'>Iniciar Sesion</a></li>";
+                 echo "<li><a href='iniciarSesion.php'>Iniciar Sesion</a></li>";
              }
              ?>
           </ul>

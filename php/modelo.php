@@ -31,7 +31,7 @@ function desconectarBBDD($conexion){
 //FIN DE FUNCIONES PARA LA BASE DE DATOS
 
 //SELECT
-
+//para registro
 function buscarUsuario($usuario){
 
     $con = conectarBBDD();
@@ -43,6 +43,24 @@ function buscarUsuario($usuario){
         if(mysql_num_rows($result) > 0){
           while(!$encontrado && ($row = mysql_fetch_assoc($result))){
             $encontrado = ($row["nombreusuario"] == $usuario);
+          }
+        }
+    }
+    desconectarBBDD($con);
+    return $encontrado;
+}
+
+//para inicio de sesion
+function autenticarUsuario($usuario, $pass){
+
+    $con = conectarBBDD();
+    $encontrado = false;
+    if($con != NULL){
+        $sql = "SELECT nombreusuario, pass from usuarios where nombreusuario <> 'admin' && nombreusuario = '$usuario'";
+        $result = mysql_query($sql, $con);
+        if(mysql_num_rows($result) > 0){
+          while(!$encontrado && ($row = mysql_fetch_assoc($result))){
+            $encontrado = (($row["nombreusuario"] == $usuario) && ($row["pass"] == $pass));
           }
         }
     }

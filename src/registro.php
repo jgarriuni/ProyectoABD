@@ -29,11 +29,11 @@
          <a class="brand-logo"><i class="material-icons">chat</i>Tuita</a>
           <a href="#" data-activates="mobile-demo" class="button-collapse"><i class="material-icons">menu</i></a>
           <ul class="right hide-on-med-and-down">
-            <li><a href="iniciarSesion.html">Iniciar Sesion</a></li>
+            <li><a href="iniciarSesion.php">Iniciar Sesion</a></li>
             <li><a href="index.php">Pagina Principal</a></li>
           </ul>
           <ul class="side-nav" id="mobile-demo">
-            <li><a href="iniciarSesion.html">Iniciar Sesion</a></li>
+            <li><a href="iniciarSesion.php">Iniciar Sesion</a></li>
             <li><a href="index.php">Pagina Principal</a></li>
           </ul>
         </div>
@@ -45,7 +45,6 @@
         <?php
           $nombre = $apellido = $usuario = $contrasenia = $fecha = $gustos = "";
           if($_SERVER["REQUEST_METHOD"] == "POST"){
-
                 require('../php/controlador.php');
                 $nombre = testearDato($_POST["Nombre"]);
                 $apellido = testearDato($_POST["Apellidos"]);
@@ -79,8 +78,8 @@
                   }
                   else{
                       insertar($usuario, $nombre, $apellido, $contrasenia, $fecha);
-                      session_start();
-                      $_SESSION["usuario"] = $usuario;
+                      //session_start();
+                      //$_SESSION["usuario"] = $usuario;
                       header('Location: index.php');
                   }
                 }
