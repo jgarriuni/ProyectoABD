@@ -14,17 +14,25 @@ function testearDato($dato){
 //FUNCIONES PARA LA BASE DE DATOS
 
 function conectarBBDD(){
+    /*
     $db = @mysql_connect('localhost', 'root', '');
     if($db){
         mysql_select_db('tuita', $db);//aqui se selecciona la bbdd que queramos
         return $db;
     }
     return NULL;
+    */
+    $db = new mysqli("localhost", "root", "root", "Tuita");
+
+    if($db){
+      return $db;
+    }
+    return NULL;
 }
 
 function desconectarBBDD($conexion){
     if($conexion){
-        @mysql_close($conexion);
+        $conexion->close();
     }
 }
 
@@ -38,11 +46,10 @@ function buscarUsuario($usuario){
     $encontrado = false;
 
     if($con != NULL){
-        $sql = "SELECT nombreusuario from usuarios where nombreusuario <> 'admin'";
-        $result = mysql_query($sql, $con);
-        if(mysql_num_rows($result) > 0){
-          while(!$encontrado && ($row = mysql_fetch_assoc($result))){
-            $encontrado = ($row["nombreusuario"] == $usuario);
+        $result = $con->query("SELECT nombreusuario from usuarios where nombreusuario <> 'admin'");
+        if($result->num_rows() > 0){
+          while($row = $result->fetch_row()){
+            
           }
         }
     }
