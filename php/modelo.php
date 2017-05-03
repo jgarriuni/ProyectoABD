@@ -47,9 +47,9 @@ function buscarUsuario($usuario){
 
     if($con != NULL){
         $result = $con->query("SELECT nombreusuario from usuarios where nombreusuario <> 'admin'");
-        if($result->num_rows() > 0){
+        if($result->num_rows > 0){
           while($row = $result->fetch_row()){
-            
+
           }
         }
     }
