@@ -7,8 +7,8 @@ $query->store_result();
 
 $rows = $query->num_rows;
 
-echo $rows;*/
+echo $rows;
 
-require('../php/modelo.php');
-buscarUsuario("jose");
+require('../php/modelo.php');*/
+
 ?>

@@ -22,18 +22,16 @@ function conectarBBDD(){
     }
     return NULL;
     */
-    $db = new mysqli("localhost", "root", "root", "Tuita");
+    $db = new mysqli("localhost", "root", "", "Tuita");
 
-    if($db){
+    if(!$db->connect_error){
       return $db;
     }
     return NULL;
 }
 
 function desconectarBBDD($conexion){
-    if($conexion){
-        $conexion->close();
-    }
+    $conexion->close();
 }
 
 //FIN DE FUNCIONES PARA LA BASE DE DATOS
@@ -41,16 +39,31 @@ function desconectarBBDD($conexion){
 //SELECT
 //para registro
 function buscarUsuario($usuario){
+	/*
+	 * 	mysql_fetch_row
+		This function will return a row where the values will come in the order 
+		as they are defined in the SQL query, and the keys will span from 0 to one 
+		less than the number of columns selected.
+		
+		mysql_fetch_assoc
+		This function will return a row as an associative array where the column 
+		names will be the keys storing corresponding value.
 
+		mysql_fetch_array
+		This function will actually return an array with both the contents of 
+		mysql_fetch_rowand mysql_fetch_assoc merged into one. It will both have 
+		numeric and string keys which will let you access your data in whatever 
+		way you'd find easiest.
+	 * */
     $con = conectarBBDD();
     $encontrado = false;
 
     if($con != NULL){
-        $result = $con->query("SELECT nombreusuario from usuarios where nombreusuario <> 'admin'");
-        if($result->num_rows > 0){
-          while($row = $result->fetch_row()){
-
-          }
+    	$result = $con->query("SELECT nombreusuario from usuarios where nombreusuario <> 'admin'");
+    	if($result->num_rows > 0){
+    		while($row = $result->fetch_assoc()){
+          		$encontrado .= ($row["nombreusuario"] == $usuario);
+    		}
         }
     }
     desconectarBBDD($con);
@@ -60,19 +73,19 @@ function buscarUsuario($usuario){
 //para inicio de sesion
 function autenticarUsuario($usuario, $pass){
 
-    $con = conectarBBDD();
-    $encontrado = false;
-    if($con != NULL){
-        $sql = "SELECT nombreusuario, pass from usuarios where nombreusuario <> 'admin' && nombreusuario = '$usuario'";
-        $result = mysql_query($sql, $con);
-        if(mysql_num_rows($result) > 0){
-          while(!$encontrado && ($row = mysql_fetch_assoc($result))){
-            $encontrado = (($row["nombreusuario"] == $usuario) && ($row["pass"] == $pass));
-          }
-        }
-    }
-    desconectarBBDD($con);
-    return $encontrado;
+	$con = conectarBBDD();
+	$encontrado = false;
+	
+	if($con != NULL){
+		$result = $con->query("SELECT nombreusuario, pass from usuarios where nombreusuario <> 'admin'");
+		if($result->num_rows > 0){
+			while($row = $result->fetch_assoc()){
+				$encontrado .= ($row["nombreusuario"] == $usuario && $row["pass"] == $pass);
+			}
+		}
+	}
+	desconectarBBDD($con);
+	return $encontrado;
 }
 
 //FIN SELECT
@@ -87,7 +100,7 @@ function insertarUsuario($nombreUsuario, $nombre, $apellidos, $pass, $fechaNacim
         $insert = "INSERT INTO usuarios (nombreUsuario,nombre,apellidos,pass,fechaNacimiento, administrador)
         VALUES ('$nombreUsuario', '$nombre', '$apellidos', '$pass', '$fechaNacimiento', 'false')";
 
-        if(mysql_query($insert, $con)){
+        if($con->query($insert) === TRUE){
             return true;
         }
         else{
@@ -105,8 +118,9 @@ function insertarUsuario($nombreUsuario, $nombre, $apellidos, $pass, $fechaNacim
 //SESIONES DE USUARIO
 
 function cerrarSesionUsuario(){
-    session_unset();
-    session_destroy();
+    //session_unset();
+    
+	session_destroy();
 }
 
 //FIN SESIONES DE USUARIO

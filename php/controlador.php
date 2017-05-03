@@ -34,10 +34,5 @@ function insertar($usuario, $nombre, $apellidos, $pass, $fecha){
 //FIN INSERT
 
 //SESIONES DE USUARIO
-
-function cerrarSesion(){
-    cerrarSesionUsuario();
-}
-
 //FIN SESIONES DE USUARIO
 ?>

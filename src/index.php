@@ -27,12 +27,12 @@
           <a href="#" data-activates="mobile-demo" class="button-collapse"><i class="material-icons">menu</i></a>
           <ul class="right hide-on-med-and-down">
             <?php
-                require('../php/controlador.php');
+                require_once('../php/controlador.php');
                 session_start();
                 if(!empty($_SESSION["usuario"])){
                     if($_SESSION["usuario"] != null){
-                        echo "<li><a href='miPerfil.html'>Hola, ".$_SESSION["usuario"]."</a></li>";
-                        echo "<li><a href='#'>Cerrar Sesion<a></li>";
+                    	echo "<li><a href='miPerfil.html'>Hola, ".$_SESSION["usuario"]."</a></li>";
+                    	echo "<li><a href='cerrarSesion.php'>Cerrar Sesion</a></li>";
                     }
                     else{
                         echo "<li><a href='registro.php'>Registrarse</a></li>";
@@ -46,21 +46,21 @@
             ?>
           </ul>
           <ul class="side-nav" id="mobile-demo">
-              <?php
-              if(!empty($_SESSION['usuario'])){
-                  if($_SESSION['usuario'] != null){
-                      echo "<li><a href='miPerfil.html'>Hola, ".$_SESSION["usuario"]."</a></li>";
-                      echo "<li><a href=>Cerrar Sesion<a></li>";
-                 }
-                 else{
-                     echo "<li><a href='registro.php'>Registrarse</a></li>";
-                     echo "<li><a href='iniciarSesion.php'>Iniciar Sesion</a></li>";
-                 }
-             }
-             else{
-                 echo "<li><a href='registro.php'>Registrarse</a></li>";
-                 echo "<li><a href='iniciarSesion.php'>Iniciar Sesion</a></li>";
-             }
+             <?php
+	             if(!empty($_SESSION['usuario'])){
+	                  if($_SESSION['usuario'] != null){
+	                  		echo "<li><a href='miPerfil.html'>Hola, ".$_SESSION["usuario"]."</a></li>";
+	                  		echo "<li><a href='cerrarSesion.php'>Cerrar Sesion</a></li>";
+	                 }
+	                 else{
+	                     echo "<li><a href='registro.php'>Registrarse</a></li>";
+	                     echo "<li><a href='iniciarSesion.php'>Iniciar Sesion</a></li>";
+	                 }
+	             }
+	             else{
+	                 echo "<li><a href='registro.php'>Registrarse</a></li>";
+	                 echo "<li><a href='iniciarSesion.php'>Iniciar Sesion</a></li>";
+	             }
              ?>
           </ul>
         </div>
@@ -80,22 +80,22 @@
             <li>
               <img src="../img/textingphoto2.jpg"> <!-- random image -->
               <div class="caption right-align black-text">
-                <h3>¿De que trata?</h3>
+                <h3>De que trata?</h3>
                 <h5 class="light black-text">Es una aplicacion estilo twitter</h5>
               </div>
             </li>
             <li>
               <img src="../img/textingphoto3.jpg"> <!-- random image -->
               <div class="caption left-align black-text">
-                <h3>¿Que puedo hacer en ella?</h3>
+                <h3>Que puedo hacer en ella?</h3>
                 <h5 class="light black-text">Puedes twittear a todos, a un grupo o por privado</h5>
               </div>
             </li>
             <li>
               <img src="../img/textingphoto4.jpg"> <!-- random image -->
               <div class="caption center-align black-text">
-                <h3>¿Y que mas?</h3>
-                <h5 class="light black-text">¡Compartir lo que quieras!</h5>
+                <h3>Y que mas?</h3>
+                <h5 class="light black-text">Compartir lo que quieras!</h5>
               </div>
             </li>
           </ul>
@@ -103,7 +103,7 @@
         <!-- Fin Carrusel -->
 
         <!-- Promocion -->
-        <div class="row">
+        <div class="row black-text">
           <div class="col s4">
             <div class= "center-align">
               <i class="large material-icons">language</i>

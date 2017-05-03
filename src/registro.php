@@ -78,8 +78,8 @@
                   }
                   else{
                       insertar($usuario, $nombre, $apellido, $contrasenia, $fecha);
-                      //session_start();
-                      //$_SESSION["usuario"] = $usuario;
+                      session_start();
+                      $_SESSION["usuario"] = $usuario;
                       header('Location: index.php');
                   }
                 }

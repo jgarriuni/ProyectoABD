@@ -43,9 +43,9 @@
             <?php
                 $usuario = $pass = "";
                 if($_SERVER["REQUEST_METHOD"] == "POST"){
-                    require('../php/controlador.php');
-                    $usuario = testearDato($_POST["Usuario"]);
-                    $pass = testearDato($_POST["Password"]);
+                    require_once('../php/controlador.php');
+                    $usuario = testearDato($_POST["usuario"]);
+                    $pass = testearDato($_POST["password"]);
                 }
             ?>
           <form class="col s12" method="post" action="<?php echo htmlspecialchars($_SERVER["PHP_SELF"])?>" onsubmit="return comprobarDatos()">
@@ -62,21 +62,21 @@
               <div class="col s4 hoverable">
               <div class="input-field col s12">
                 <i class="material-icons prefix">perm_identity</i>
-                <input id="id_usuario" type="text" class="validate" name="Usuario" onchange="comprobarUsuario()">
+                <input id="id_usuario" type="text" class="validate" name="usuario" onchange="comprobarUsuario()">
                 <label for="id_usuario">Usuario</label>
                 <p id="error_usuario" class="red-text"></p>
                 <?php
                     $encontrado = false;
                     if($usuario != ""){
                       if(buscar($usuario)){
-                          $encontrado = true;
+                      		$encontrado = true;
                       }
                     }
                 ?>
               </div>
               <div class="input-field col s12">
                 <i class="material-icons prefix">info_outline</i>
-                <input id="id_password" type="password" class="validate" name="Password" onchange="comprobarContrasenia()">
+                <input id="id_password" type="password" class="validate" name="password" onchange="comprobarContrasenia()">
                 <label for="id_password">Contraseña</label>
                 <p id="error_pass" class="red-text"></p>
                 <?php
@@ -88,7 +88,7 @@
                               header('Location: index.php');
                         }
                         else{
-                            echo '<p id="error_usuario" class="red-text">La contraseña no es correcta</p>';
+                            echo '<p id="error_usuario" class="red-text">La contrase�a no es correcta</p>';
                         }
                       }
                     }
