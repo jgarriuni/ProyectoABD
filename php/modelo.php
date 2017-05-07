@@ -124,5 +124,4 @@ function cerrarSesionUsuario(){
 }
 
 //FIN SESIONES DE USUARIO
-
 ?>

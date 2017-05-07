@@ -26,11 +26,11 @@
           <a href="#" data-activates="mobile-demo" class="button-collapse"><i class="material-icons">menu</i></a>
           <ul class="right hide-on-med-and-down">
             <li><a href="index.php">Pagina Principal</a></li>
-            <li><a href="!#">Cerrar Sesion</a></li>
+            <li><a href="cerrarSesion.php">Cerrar Sesion</a></li>
           </ul>
           <ul class="side-nav" id="mobile-demo">
-            <li><a href="index.html">Pagina Principal</a></li>
-            <li><a href="!#">Cerrar Sesion</a></li>
+            <li><a href="index.php">Pagina Principal</a></li>
+            <li><a href="cerrarSesion.php">Cerrar Sesion</a></li>
           </ul>
         </div>
 		  <div class="col s12">
@@ -46,21 +46,21 @@
         <!-- Inicio efecto parallax donde estaran los tuits -->
         <!-- PROBAR UN PARALLAX CONTAINER POR CADA TAB PANEL-->
           <!-- Contenido -->
-          <div id="todos" class="col s12">
-              <div class="row">
-                  <div class="col s6">
-                    <div class="card blue-grey darken-1">
-                      <div class="card-content white-text">
-                        <span class="card-title">Todos</span>
-                        <p>Todos texto</p>
-                      </div>
-                    </div>
-                  </div>
-              </div>
-          </div>
+			  <div id="todos" class="col s12">
+				  <div class="row">
+					  <div class="col s4">
+						<div class="card blue-grey darken-1">
+						  <div class="card-content white-text">
+							<span class="card-title">Todos</span>
+							<p>Todos texto</p>
+						  </div>
+						</div>
+					  </div>
+				  </div>
+			</div>
           <div id="grupos" class="col s12">
               <div class="row">
-                  <div class="col s6">
+                  <div class="col s4">
                     <div class="card blue-grey darken-1">
                       <div class="card-content white-text">
                         <span class="card-title">Grupo</span>
@@ -72,7 +72,7 @@
           </div>
           <div id="privados" class="col s12">
               <div class="row">
-                  <div class="col s6">
+                  <div class="col s4">
                     <div class="card blue-grey darken-1">
                       <div class="card-content white-text">
                         <span class="card-title">Privado</span>
