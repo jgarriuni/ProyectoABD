@@ -30,7 +30,7 @@
                 session_start();
                 if(!empty($_SESSION["usuario"])){
                     if($_SESSION["usuario"] != null){
-                    	echo "<li><a href='miPerfil.html'>Hola, ".$_SESSION["usuario"]."</a></li>";
+                    	echo "<li><a href='miPerfil.php'>Hola, ".$_SESSION["usuario"]."</a></li>";
                     	echo "<li><a href='cerrarSesion.php'>Cerrar Sesion</a></li>";
                     }
                     else{
@@ -48,7 +48,7 @@
              <?php
 	             if(!empty($_SESSION['usuario'])){
 	                  if($_SESSION['usuario'] != null){
-	                  		echo "<li><a href='miPerfil.html'>Hola, ".$_SESSION["usuario"]."</a></li>";
+	                  		echo "<li><a href='miPerfil.php'>Hola, ".$_SESSION["usuario"]."</a></li>";
 	                  		echo "<li><a href='cerrarSesion.php'>Cerrar Sesion</a></li>";
 	                 }
 	                 else{

@@ -101,16 +101,6 @@
 
           <div class = "row">
           <div class="col s4">
-              <label>Gusto Musical*</label>
-               <select class="browser-default">
-                 <option value="" disabled selected>Selecciona tu estilo preferido</option>
-                 <option value="1">Rock</option>
-                 <option value="2">Dance</option>
-                 <option value="3">Rap</option>
-                 <option value="4">Musica clasica</option>
-               </select>
-          </div>
-          <div class="col s4">
             <label for="id_fecha">Fecha de nacimiento *</label>
             <input id="id_fecha" type="date" name="Fecha" onchange="comprobarFecha()">
             <p id="error_fecha" class="red-text"></p>

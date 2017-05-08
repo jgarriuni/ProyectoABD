@@ -33,6 +33,10 @@ function insertar($usuario, $nombre, $apellidos, $pass, $fecha){
 
 //FIN INSERT
 
-//SESIONES DE USUARIO
-//FIN SESIONES DE USUARIO
+//FUNCIONES PARA MANDAR MENSAJES
+
+function mandarMensajeATodos($mensaje, $destinatarioGrupo, $destinatarioUsuario, $emisor){
+    return mandarMensajeATodos($mensaje, $destinatarioGrupo, $destinatarioUsuario, $emisor);
+}
+//FIN DE FUNCIONES PARA MANDAR MENSAJES
 ?>

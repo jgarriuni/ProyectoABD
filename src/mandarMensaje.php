@@ -31,66 +31,20 @@
          <a class="brand-logo"><i class="material-icons">chat</i>Tuita</a>
           <a href="#" data-activates="mobile-demo" class="button-collapse"><i class="material-icons">menu</i></a>
           <ul class="right hide-on-med-and-down">
-            <li><a href="index.php">Pagina Principal</a></li>
-            <li><a href="cerrarSesion.php">Cerrar Sesion</a></li>
+                <li><a href="miPerfil.php">Volver al perfil</a></li>
+                <li><a href="cerrarSesion.php">Cerrar Sesion</a></li>
           </ul>
           <ul class="side-nav" id="mobile-demo">
-            <li><a href="index.php">Pagina Principal</a></li>
-            <li><a href="cerrarSesion.php">Cerrar Sesion</a></li>
+              <li><a href="miPerfil.php">Volver al perfil</a></li>
+              <li><a href="cerrarSesion.php">Cerrar Sesion</a></li>
           </ul>
         </div>
-		  <div class="col s12">
-			 <ul class="row tabs teal">
-				<li class="tab col s4"><a class="white-text" href="#todos">Todos</a></li>
-				<li class="tab col s4"><a class="white-text" href="#grupos">Grupos</a></li>
-				<li class="tab col s4"><a class="white-text" href="#privados">Privados</a></li>
-			  </ul>
-		  </div>
       </nav>
 	  <!-- FIN Barra de navegacion -->
-	  <main>
-        <!-- Inicio efecto parallax donde estaran los tuits -->
-        <!-- PROBAR UN PARALLAX CONTAINER POR CADA TAB PANEL-->
-          <!-- Contenido -->
-			<div id="todos" class="col s12">
-				  <div class="row">
-					  <div class="col s4">
-  						<div class="card blue-grey darken-1">
-  						  <div class="card-content white-text">
-    							<span class="card-title">Todos</span>
-    							<p>Todos texto</p>
-  						  </div>
-  						</div>
-					  </div>
-				  </div>
-			</div>
-          <div id="grupos" class="col s12">
-              <div class="row">
-                  <div class="col s4">
-                    <div class="card blue-grey darken-1">
-                      <div class="card-content white-text">
-                        <span class="card-title">Grupo</span>
-                        <p>Grupo texto</p>
-                      </div>
-                    </div>
-                  </div>
-              </div>
-          </div>
-          <div id="privados" class="col s12">
-              <div class="row">
-                  <div class="col s4">
-                    <div class="card blue-grey darken-1">
-                      <div class="card-content white-text">
-                        <span class="card-title">Privado</span>
-                        <p>Privado text</p>
-                      </div>
-                    </div>
-                  </div>
-              </div>
-          </div>
-          <!-- Fin Contenido -->
-        <!-- FIN efecto parallax donde estaran los tuits -->
-      </main>
+      <main>
+          <form class="col s12" method="post" action="<?php echo htmlspecialchars($_SERVER["PHP_SELF"])?>" onsubmit="">
+          </form>
+    </main>
       <!-- Footer de la pagina -->
       <footer class="page-footer teal"><!-- Color -->
         <div class="container">

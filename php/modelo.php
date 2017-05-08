@@ -41,25 +41,25 @@ function desconectarBBDD($conexion){
 function buscarUsuario($usuario){
 	/*
 	 * 	mysql_fetch_row
-		This function will return a row where the values will come in the order 
-		as they are defined in the SQL query, and the keys will span from 0 to one 
+		This function will return a row where the values will come in the order
+		as they are defined in the SQL query, and the keys will span from 0 to one
 		less than the number of columns selected.
-		
+
 		mysql_fetch_assoc
-		This function will return a row as an associative array where the column 
+		This function will return a row as an associative array where the column
 		names will be the keys storing corresponding value.
 
 		mysql_fetch_array
-		This function will actually return an array with both the contents of 
-		mysql_fetch_rowand mysql_fetch_assoc merged into one. It will both have 
-		numeric and string keys which will let you access your data in whatever 
+		This function will actually return an array with both the contents of
+		mysql_fetch_rowand mysql_fetch_assoc merged into one. It will both have
+		numeric and string keys which will let you access your data in whatever
 		way you'd find easiest.
 	 * */
     $con = conectarBBDD();
     $encontrado = false;
 
     if($con != NULL){
-    	$result = $con->query("SELECT nombreusuario from usuarios where nombreusuario <> 'admin'");
+    	$result = $con->query("SELECT nombreusuario from usuarios");
     	if($result->num_rows > 0){
     		while($row = $result->fetch_assoc()){
           		$encontrado .= ($row["nombreusuario"] == $usuario);
@@ -75,9 +75,9 @@ function autenticarUsuario($usuario, $pass){
 
 	$con = conectarBBDD();
 	$encontrado = false;
-	
+
 	if($con != NULL){
-		$result = $con->query("SELECT nombreusuario, pass from usuarios where nombreusuario <> 'admin'");
+		$result = $con->query("SELECT nombreusuario, pass from usuarios");
 		if($result->num_rows > 0){
 			while($row = $result->fetch_assoc()){
 				$encontrado .= ($row["nombreusuario"] == $usuario && $row["pass"] == $pass);
@@ -115,13 +115,26 @@ function insertarUsuario($nombreUsuario, $nombre, $apellidos, $pass, $fechaNacim
 
 //FIN INSERT
 
-//SESIONES DE USUARIO
+//FUNCIONES PARA MANDAR MENSAJES
 
-function cerrarSesionUsuario(){
-    //session_unset();
-    
-	session_destroy();
+function mandarMensajeATodosUsuarios($mensaje, $destinatarioGrupo, $destinatarioUsuario, $emisor){
+
+    $con = conectarBBDD();
+    if($con != NULL){
+        $insert = "INSERT INTO mensajes (mensaje,destinatarioGrupo, destinatariousuario,emisor)
+        VALUES ('$mensaje','$destinatarioGrupo','$destinatarioUsuario','$emisor')";
+
+        if($con->query($insert) === TRUE){
+            return true;
+        }
+        else{
+            return false;
+        }
+    }
+    else{
+        return false;
+    }
+    desconectarBBDD($con);
 }
-
-//FIN SESIONES DE USUARIO
+//FIN DE FUNCIONES PARA MANDAR MENSAJES
 ?>
