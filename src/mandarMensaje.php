@@ -1,10 +1,10 @@
 <!DOCTYPE html>
 <html>
   <?php
-    session_start();
+    /*session_start();
     if(!isset($_SESSION['usuario'])){
       header('Location: cerrarSesion.php');
-    }
+    }*/
   ?>
     <head>
       <meta charset="utf-8">
@@ -22,8 +22,9 @@
 
     <body>
       <!--Import jQuery before materialize.js-->
-      <script type="text/javascript" src="https://code.jquery.com/jquery-2.1.1.min.js"></script>
-      <script type="text/javascript" src="../js/materialize.js"></script>
+        <script type="text/javascript" src="https://code.jquery.com/jquery-2.1.1.min.js"></script>
+        <script type="text/javascript" src="../js/materialize.js"></script>
+        <script type="text/javascript" src="../js/comprobarMensaje.js"></script>
 
       <!-- Barra de navegacion -->
       <nav class="nav-extended teal">
@@ -42,9 +43,38 @@
       </nav>
 	  <!-- FIN Barra de navegacion -->
       <main>
-          <form class="col s12" method="post" action="<?php echo htmlspecialchars($_SERVER["PHP_SELF"])?>" onsubmit="">
+          <?php
+            if($_SERVER["REQUEST_METHOD"] == "POST"){
+                
+            }
+          ?>
+          <form class="col s12" method="post" action="<?php echo htmlspecialchars($_SERVER["PHP_SELF"])?>" onsubmit="return mandarMensaje()">
+            <div class="row">
+                <div class="input-field col s12">
+                    <textarea id="id_mensaje" class="materialize-textarea" name="mensaje" data-length="130" onchange="comprobarMensaje()"></textarea>
+                    <label for="id_mensaje">Mensaje</label>
+                </div>
+                <p id="error_mensaje" class="red-text"></p>
+            </div>
+              <div class="row">
+                <p>
+                    <input name="destinatario" type="radio" id="id_todos" value="atodos" onchange="comprobarDestinatario()">  
+                    <label for="id_todos">Todos</label>    
+                    <input name="destinatario" type="radio" id="id_grupo" value="agrupo" onchange="comprobarDestinatario()">  
+                    <label for="id_grupo">Grupo</label>
+                    <input name="destinatario" type="radio" id="id_usuario" value="ausuario" onchange="comprobarDestinatario()">  
+                    <label for="id_usuario">Privado</label>
+                </p>
+                <p id="error_destinatario" class="red-text"></p>
+              </div> 
+              <div class="row">
+                <div class="col s4"></div>
+                    <div class="col s4">
+                        <button class="btn"><i class="material-icons right">thumb_up</i>Mandar Tweet</button>
+                    </div>
+                </div>
           </form>
-    </main>
+        </main>
       <!-- Footer de la pagina -->
       <footer class="page-footer teal"><!-- Color -->
         <div class="container">

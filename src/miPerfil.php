@@ -31,10 +31,12 @@
          <a class="brand-logo"><i class="material-icons">chat</i>Tuita</a>
           <a href="#" data-activates="mobile-demo" class="button-collapse"><i class="material-icons">menu</i></a>
           <ul class="right hide-on-med-and-down">
+            <li><a href="mandarMensaje.php">Mandar Tweet</a></li>
             <li><a href="index.php">Pagina Principal</a></li>
             <li><a href="cerrarSesion.php">Cerrar Sesion</a></li>
           </ul>
           <ul class="side-nav" id="mobile-demo">
+            <li><a href="mandarMensaje.php">Mandar Tweet</a></li>
             <li><a href="index.php">Pagina Principal</a></li>
             <li><a href="cerrarSesion.php">Cerrar Sesion</a></li>
           </ul>
