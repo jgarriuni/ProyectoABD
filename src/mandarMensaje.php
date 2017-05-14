@@ -1,10 +1,10 @@
 <!DOCTYPE html>
 <html>
   <?php
-    /*session_start();
+    session_start();
     if(!isset($_SESSION['usuario'])){
       header('Location: cerrarSesion.php');
-    }*/
+    }
   ?>
     <head>
       <meta charset="utf-8">
@@ -42,11 +42,15 @@
         </div>
       </nav>
 	  <!-- FIN Barra de navegacion -->
-      <main>
+      <!--<main>
           <?php
             if($_SERVER["REQUEST_METHOD"] == "POST"){
-                
-            }
+              echo "post";
+                require_once('../php/modelo.php');
+                //mandarMensajeATodos($mensaje, $destinatarioGrupo, $destinatarioUsuario, $emisor)
+                if(mandarMensajeATodos($_POST['mensaje'], "", "", $_SESSION['usuario'])){
+                  header('Location: miPerfil.php');
+                }
           ?>
           <form class="col s12" method="post" action="<?php echo htmlspecialchars($_SERVER["PHP_SELF"])?>" onsubmit="return mandarMensaje()">
             <div class="row">
@@ -74,7 +78,7 @@
                     </div>
                 </div>
           </form>
-        </main>
+        </main>-->
       <!-- Footer de la pagina -->
       <footer class="page-footer teal"><!-- Color -->
         <div class="container">
@@ -101,4 +105,4 @@
       <!-- Fin Footer de pagina -->
     </body>
     <script type="text/javascript" src="../js/functions.js"></script>
-  </html>
+</html>

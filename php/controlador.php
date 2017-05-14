@@ -23,6 +23,11 @@ function buscar($usuario){
 function autenticar($usuario, $pass){
     return autenticarUsuario($usuario, $pass);
 }
+
+//para ver mensajes dirigidos a todos
+function verMensajesATodos(){
+	return verMensajesTodos();
+}
 //FIN SELECT
 
 //INSERT

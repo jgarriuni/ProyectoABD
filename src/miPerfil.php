@@ -65,6 +65,22 @@
   						</div>
 					  </div>
 				  </div>
+          <?php 
+            require_once('../php/controlador.php');
+            $mensajes = verMensajesATodos();
+            echo "caca";
+              /*while($row = $result->fetch_assoc()){
+                $encontrado .= ($row["nombreusuario"] == $usuario && $row["pass"] == $pass);
+              }*/
+              /*while($row = $mensajes->fetch_assoc()){
+                echo "<div class='card blue-grey darken-1'>";
+                echo "<div class='card-content white-text'>";
+                echo "<span class='card-title'>".$mensajes['emisor']."</span>";
+                echo "<p>".$mensajes['mensaje']."</p>";
+                echo "</div>";
+                echo "</div>";
+              }*/
+          ?>
 			</div>
           <div id="grupos" class="col s12">
               <div class="row">

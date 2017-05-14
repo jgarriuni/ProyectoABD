@@ -22,7 +22,7 @@ function conectarBBDD(){
     }
     return NULL;
     */
-    $db = new mysqli("localhost", "root", "", "Tuita");
+    $db = new mysqli("localhost", "root", "joseubuntu", "tuita");
 
     if(!$db->connect_error){
       return $db;
@@ -86,6 +86,20 @@ function autenticarUsuario($usuario, $pass){
 	}
 	desconectarBBDD($con);
 	return $encontrado;
+}
+
+//para ver mensajes dirigidos a todos
+function verMensajesTodos(){
+
+    $con = conectarBBDD();
+    if($con != NULL){
+        $result = $con->query("SELECT mensaje, emisor FROM mensajes");
+        return $result;
+    }
+    else{
+        return NULL;
+    }
+
 }
 
 //FIN SELECT
