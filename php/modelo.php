@@ -22,7 +22,7 @@ function conectarBBDD(){
     }
     return NULL;
     */
-    $db = new mysqli("localhost", "root", "joseubuntu", "tuita");
+    $db = new mysqli("localhost", "root", "", "tuita");
 
     if(!$db->connect_error){
       return $db;
@@ -93,13 +93,25 @@ function verMensajesTodos(){
 
     $con = conectarBBDD();
     if($con != NULL){
-        $result = $con->query("SELECT mensaje, emisor FROM mensajes");
+        $result = $con->query("SELECT mensaje, emisor FROM mensajes WHERE destinatarioGrupo IS NULL AND destinatariousuario IS NULL");
         return $result;
     }
     else{
         return NULL;
     }
 
+}
+
+function verMensajesPrivados($usuario){
+	
+	$con = conectarBBDD();
+    if($con != NULL){
+        $result = $con->query("SELECT mensaje, emisor FROM mensajes WHERE destinatariousuario = '$usuario'");
+        return $result;
+    }
+    else{
+        return NULL;
+    }
 }
 
 //FIN SELECT
@@ -131,24 +143,25 @@ function insertarUsuario($nombreUsuario, $nombre, $apellidos, $pass, $fechaNacim
 
 //FUNCIONES PARA MANDAR MENSAJES
 
-function mandarMensajeATodosUsuarios($mensaje, $destinatarioGrupo, $destinatarioUsuario, $emisor){
+function mandarMensajeATodosUsuarios($mensaje, $emisor){
 
     $con = conectarBBDD();
-    if($con != NULL){
-        $insert = "INSERT INTO mensajes (mensaje,destinatarioGrupo, destinatariousuario,emisor)
-        VALUES ('$mensaje','$destinatarioGrupo','$destinatarioUsuario','$emisor')";
+	if($con != NULL){
+		$insert = "INSERT INTO mensajes (mensaje,emisor)
+		VALUES ('$mensaje','$emisor')";
 
-        if($con->query($insert) === TRUE){
-            return true;
-        }
-        else{
-            return false;
-        }
-    }
-    else{
-        return false;
-    }
-    desconectarBBDD($con);
+		if($con->query($insert) === TRUE){
+			return true;
+		}
+		else{
+			echo $con->error;
+			return false;
+		}
+	}
+	else{
+		return false;
+	}
+	desconectarBBDD($con);
 }
 //FIN DE FUNCIONES PARA MANDAR MENSAJES
 ?>

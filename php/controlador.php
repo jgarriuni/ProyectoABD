@@ -28,6 +28,10 @@ function autenticar($usuario, $pass){
 function verMensajesATodos(){
 	return verMensajesTodos();
 }
+
+function verMensajesAPrivados($usuario){
+	return verMensajesPrivados($usuario);
+}
 //FIN SELECT
 
 //INSERT
@@ -40,8 +44,8 @@ function insertar($usuario, $nombre, $apellidos, $pass, $fecha){
 
 //FUNCIONES PARA MANDAR MENSAJES
 
-function mandarMensajeATodos($mensaje, $destinatarioGrupo, $destinatarioUsuario, $emisor){
-    return mandarMensajeATodos($mensaje, $destinatarioGrupo, $destinatarioUsuario, $emisor);
+function mandarMensajeATodos($mensaje, $emisor){
+    return mandarMensajeATodosUsuarios($mensaje, $emisor);
 }
 //FIN DE FUNCIONES PARA MANDAR MENSAJES
 ?>

@@ -55,59 +55,43 @@
         <!-- PROBAR UN PARALLAX CONTAINER POR CADA TAB PANEL-->
           <!-- Contenido -->
 			<div id="todos" class="col s12">
-				  <div class="row">
-					  <div class="col s4">
-  						<div class="card blue-grey darken-1">
-  						  <div class="card-content white-text">
-    							<span class="card-title">Todos</span>
-    							<p>Todos texto</p>
-  						  </div>
-  						</div>
-					  </div>
-				  </div>
-          <?php 
-            require_once('../php/controlador.php');
-            $mensajes = verMensajesATodos();
-            echo "caca";
-              /*while($row = $result->fetch_assoc()){
-                $encontrado .= ($row["nombreusuario"] == $usuario && $row["pass"] == $pass);
-              }*/
-              /*while($row = $mensajes->fetch_assoc()){
-                echo "<div class='card blue-grey darken-1'>";
-                echo "<div class='card-content white-text'>";
-                echo "<span class='card-title'>".$mensajes['emisor']."</span>";
-                echo "<p>".$mensajes['mensaje']."</p>";
-                echo "</div>";
-                echo "</div>";
-              }*/
-          ?>
+			  <?php 
+				require_once('../php/controlador.php');
+				$mensajes = verMensajesATodos();
+				while($row = $mensajes->fetch_assoc()){
+					echo "<div class='card blue-grey darken-1'>";
+					echo "<div class='card-content white-text'>";
+					echo "<span class='card-title'>".$row['emisor']."</span>";
+					echo "<p>".$row['mensaje']."</p>";
+					echo "</div>";
+					echo "</div>";
+				}
+			  ?>
 			</div>
           <div id="grupos" class="col s12">
               <div class="row">
-                  <div class="col s4">
                     <div class="card blue-grey darken-1">
                       <div class="card-content white-text">
                         <span class="card-title">Grupo</span>
                         <p>Grupo texto</p>
                       </div>
                     </div>
-                  </div>
               </div>
           </div>
           <div id="privados" class="col s12">
-              <div class="row">
-                  <div class="col s4">
-                    <div class="card blue-grey darken-1">
-                      <div class="card-content white-text">
-                        <span class="card-title">Privado</span>
-                        <p>Privado text</p>
-                      </div>
-                    </div>
-                  </div>
-              </div>
+            <?php
+			  $mensajes = verMensajesAPrivados($_SESSION['usuario']);
+			  while($row = $mensajes->fetch_assoc()){
+					echo "<div class='card blue-grey darken-1'>";
+					echo "<div class='card-content white-text'>";
+					echo "<span class='card-title'>".$row['emisor']."</span>";
+					echo "<p>".$row['mensaje']."</p>";
+					echo "</div>";
+					echo "</div>";
+				}
+			?>
           </div>
           <!-- Fin Contenido -->
-        <!-- FIN efecto parallax donde estaran los tuits -->
       </main>
       <!-- Footer de la pagina -->
       <footer class="page-footer teal"><!-- Color -->
