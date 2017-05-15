@@ -44,11 +44,27 @@
 	  <!-- FIN Barra de navegacion -->
       <main>
           <?php
+			$usuarioEncontrado = NULL;
             if($_SERVER["REQUEST_METHOD"] == "POST"){
                 require_once('../php/controlador.php');
-                if(mandarMensajeATodos($_POST['mensaje'], $_SESSION['usuario'])){
-                  header('Location: miPerfil.php');
-                }
+				switch($_POST['destinatario']){
+					case 'atodos':
+						if(mandarMensajeATodos($_POST['mensaje'], $_SESSION['usuario'])){
+							header('Location: miPerfil.php');
+						}; break;
+					case 'agrupo':
+					; break;
+					case 'ausuario':
+						if(buscar($_POST['dirigido'])){
+							//encuentra el usuario o grupo
+							mansarMensajePrivado($_POST['mensaje'], $_POST['dirigido'], $_SESSION['usuario']);
+							header('Location: miPerfil.php');
+						}
+						else{
+							$usuarioEncontrado = false;
+						}
+					; break;
+				}
 			}
           ?>
           <form class="col s12" method="post" action="<?php echo htmlspecialchars($_SERVER["PHP_SELF"])?>" onsubmit="return mandarMensaje()">
@@ -69,7 +85,17 @@
                     <label for="id_usuario">Privado</label>
                 </p>
                 <p id="error_destinatario" class="red-text"></p>
-              </div> 
+			  </div> 
+			  <div class ="row input-field">
+				<input id="usuariodestinatario" type="text" class="validate" name ="dirigido" onchange="comprobarNombreDestinatario()">
+				<label for="usuariodestinatario">A quien va dirigido</label>
+				<p id="error_usuariodirigido" class="red-text"></p>
+				<?php
+					if($usuarioEncontrado != NULL && !$usuarioEncontrado){
+						echo "<p id='error_usuariodirigido' class='red-text'>El usuario no esta registrado en la aplicacion</p>";
+					}
+				?>
+			  </div>
               <div class="row">
                 <div class="col s4"></div>
                     <div class="col s4">

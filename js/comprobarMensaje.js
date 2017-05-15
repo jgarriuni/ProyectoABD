@@ -51,9 +51,30 @@ function comprobarDestinatario(){
 	}
 }
 
+function comprobarNombreDestinatario(){
+
+	var grupo = document.getElementById("id_grupo");
+	var privado = document.getElementById("id_usuario");
+	
+	if(grupo.checked || privado.checked){
+		var dirigido = document.getElementById("usuariodestinatario").value;
+		if(dirigido.trim() === ""){
+			campoVacio("error_usuariodirigido");
+			return false;
+		}
+		else{
+			vaciarError("error_usuariodirigido");
+			return true;
+		}
+	}
+	else{
+		return true;
+	}
+}
+
 function mandarMensaje(){
     
-    var ok = (comprobarMensaje() & comprobarDestinatario());
+    var ok = (comprobarMensaje() & comprobarDestinatario() & comprobarNombreDestinatario());
     
     if(ok == 1){
         return true;

@@ -71,6 +71,9 @@
                       if(buscar($usuario)){
                       		$encontrado = true;
                       }
+					  else{
+						echo '<p id="error_usuario" class="red-text">El usuario no esta registrado</p>';
+					  }
                     }
                 ?>
               </div>

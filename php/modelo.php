@@ -142,7 +142,7 @@ function insertarUsuario($nombreUsuario, $nombre, $apellidos, $pass, $fechaNacim
 //FIN INSERT
 
 //FUNCIONES PARA MANDAR MENSAJES
-
+//	echo $con->error;
 function mandarMensajeATodosUsuarios($mensaje, $emisor){
 
     $con = conectarBBDD();
@@ -154,7 +154,26 @@ function mandarMensajeATodosUsuarios($mensaje, $emisor){
 			return true;
 		}
 		else{
-			echo $con->error;
+			return false;
+		}
+	}
+	else{
+		return false;
+	}
+	desconectarBBDD($con);
+}
+
+function mandarMensajeAUsuario($mensaje, $usuario, $emisor){
+	
+	$con = conectarBBDD();
+	if($con != NULL){
+		$insert = "INSERT INTO mensajes (mensaje, destinatariousuario, emisor)
+		VALUES ('$mensaje', '$usuario', '$emisor')";
+		
+		if($con->query($insert) === TRUE){
+			return true;
+		}
+		else{
 			return false;
 		}
 	}

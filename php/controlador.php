@@ -47,5 +47,9 @@ function insertar($usuario, $nombre, $apellidos, $pass, $fecha){
 function mandarMensajeATodos($mensaje, $emisor){
     return mandarMensajeATodosUsuarios($mensaje, $emisor);
 }
+
+function mansarMensajePrivado($mensaje, $usuario, $emisor){
+	return mandarMensajeAUsuario($mensaje, $usuario, $emisor);
+}
 //FIN DE FUNCIONES PARA MANDAR MENSAJES
 ?>
