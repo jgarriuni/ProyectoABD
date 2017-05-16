@@ -20,6 +20,7 @@
       <script type="text/javascript" src="https://code.jquery.com/jquery-2.1.1.min.js"></script>
       <script type="text/javascript" src="../js/materialize.js"></script>
       <script type="text/javascript" src="../js/comprobarIniciarSesion.js"></script>
+	  <script type="text/javascript" src="prueba/funcion.js"></script>
 
       <!-- Barra de navegacion -->
       <nav>
@@ -41,15 +42,15 @@
         <!-- Formulario -->
         <div class="row">
             <?php
-                $usuario = $pass = "";
+                /*$usuario = $pass = "";
                 if($_SERVER["REQUEST_METHOD"] == "POST"){
                     require_once('../php/controlador.php');
                     $usuario = testearDato($_POST["usuario"]);
                     $pass = testearDato($_POST["password"]);
-                }
+                }*/
             ?>
           <form class="col s12" method="post" action="<?php echo htmlspecialchars($_SERVER["PHP_SELF"])?>" onsubmit="return comprobarDatos()">
-            <!-- Esto es para que quede en medio con respecto a la altura -->
+            <!-- Esto es para que quede en medio con respecto a la anchura -->
             <div class="row section">
               <div class="col s4"></div>
               <div class="col s4">
@@ -62,11 +63,11 @@
               <div class="col s4 hoverable">
               <div class="input-field col s12">
                 <i class="material-icons prefix">perm_identity</i>
-                <input id="id_usuario" type="text" class="validate" name="usuario" onchange="comprobarUsuario()">
+                <input id="id_usuario" type="text" class="validate" name="usuario" onchange="MostrarConsulta(this.value)">
                 <label for="id_usuario">Usuario</label>
                 <p id="error_usuario" class="red-text"></p>
                 <?php
-                    $encontrado = false;
+                    /*$encontrado = false;
                     if($usuario != ""){
                       if(buscar($usuario)){
                       		$encontrado = true;
@@ -74,7 +75,7 @@
 					  else{
 						echo '<p id="error_usuario" class="red-text">El usuario no esta registrado</p>';
 					  }
-                    }
+                    }*/
                 ?>
               </div>
               <div class="input-field col s12">
@@ -83,7 +84,7 @@
                 <label for="id_password">ContraseÃ±a</label>
                 <p id="error_pass" class="red-text"></p>
                 <?php
-                    if($pass != ""){
+                    /*if($pass != ""){
                       if($encontrado){
                         if(autenticar($usuario, $pass)){
                               session_start();
@@ -94,7 +95,7 @@
                             echo '<p id="error_usuario" class="red-text">La contraseña no es correcta</p>';
                         }
                       }
-                    }
+                    }*/
                 ?>
               </div>
             </div>
